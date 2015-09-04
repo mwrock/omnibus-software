@@ -32,7 +32,8 @@ relative_path "gcc-#{version}"
 
 build do
   env = with_standard_compiler_flags(with_embedded_path)
-#  env['CONFIG_SHELL'] = '/opt/omnibus-toolchain/embedded/bin/bash'
+  # Solaris sh doesn't actually work for gcc, sadpanda :(
+  env['CONFIG_SHELL'] = '/opt/omnibus-toolchain/embedded/bin/bash' if solaris2?
 
   configure_command = ["./configure",
                      "--prefix=#{install_dir}/embedded",
