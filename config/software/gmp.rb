@@ -36,6 +36,9 @@ build do
                        "--prefix=#{install_dir}/embedded"]
 
   command configure_command.join(" "), env: env
-  make "-j #{workers}", env: env
-  make "-j #{workers} install", env: env
+  # Solaris 10 has a race condition during make, sorry!
+  solaris2? ? (wrkrz = 1) : (wrkrz = workers)
+
+  make "-j #{wrkrz}", env: env
+  make "-j #{wrkrz} install", env: env
 end
