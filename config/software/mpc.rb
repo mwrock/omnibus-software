@@ -21,8 +21,10 @@ dependency "gmp"
 dependency "mpfr"
 
 version("1.0.2") { source md5: "68fadff3358fb3e7976c7a398a0af4c3" }
+# This old version is required for Solaris 10 GCC compatibility
+version("0.8.1") { source md5: "5b34aa804d514cc295414a963aedb6bf" }
 
-source url: "ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.2.tar.gz"
+source url: "http://www.multiprecision.org/mpc/download/mpc-#{version}.tar.gz"
 
 relative_path "mpc-#{version}"
 

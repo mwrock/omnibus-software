@@ -36,6 +36,11 @@ relative_path "libxslt-#{version}"
 build do
   env = with_standard_compiler_flags(with_embedded_path)
 
+  if solaris2?
+    # patch taken from http://www.opencsw.org/package/libxslt/
+    patch source: "libxslt-solaris-disable-version-script.patch", plevel: 1
+  end
+
   command "./configure" \
           " --prefix=#{install_dir}/embedded" \
           " --with-libxml-prefix=#{install_dir}/embedded" \

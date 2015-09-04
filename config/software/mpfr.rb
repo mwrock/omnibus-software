@@ -21,6 +21,8 @@ dependency "gmp"
 
 version("3.1.2") { source md5: "181aa7bb0e452c409f2788a4a7f38476" }
 version("3.1.3") { source md5: "7b650781f0a7c4a62e9bc8bdaaa0018b" }
+# This old version is required for Solaris 10 GCC compatibility
+version("2.4.2") { source md5: "0e3dcf9fe2b6656ed417c89aa9159428" }
 
 source url: "http://www.mpfr.org/mpfr-#{version}/mpfr-#{version}.tar.gz"
 

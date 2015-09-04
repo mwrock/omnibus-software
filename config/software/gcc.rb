@@ -23,13 +23,16 @@ dependency "mpc"
 dependency "libiconv"
 
 version("4.9.2")      { source md5: "76f464e0511c26c93425a9dcdc9134cf" }
+# This old version is required for Solaris 10
+version("4.2.4")      { source md5: "d79f553e7916ea21c556329eacfeaa16" }
 
-source url: "http://mirrors.kernel.org/gnu/gcc/gcc-#{version}/gcc-#{version}.tar.gz"
+source url: "http://mirrors.kernel.org/gnu/gcc/gcc-#{version}/gcc-#{version}.tar.bz2"
 
 relative_path "gcc-#{version}"
 
 build do
   env = with_standard_compiler_flags(with_embedded_path)
+#  env['CONFIG_SHELL'] = '/opt/omnibus-toolchain/embedded/bin/bash'
 
   configure_command = ["./configure",
                      "--prefix=#{install_dir}/embedded",

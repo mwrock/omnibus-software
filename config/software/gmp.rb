@@ -18,10 +18,12 @@ name "gmp"
 default_version "6.0.0a"
 
 version("6.0.0a") { source md5: "b7ff2d88cae7f8085bd5006096eed470" }
+# This old version is required for Solaris 10 GCC compatibility
+version("4.3.2")  { source md5: "dd60683d7057917e34630b4a787932e8" }
 
 source url: "https://ftp.gnu.org/gnu/gmp/gmp-#{version}.tar.bz2"
 
-relative_path "gmp-6.0.0"
+relative_path "gmp-#{version}"
 
 build do
   env = with_standard_compiler_flags(with_embedded_path)
